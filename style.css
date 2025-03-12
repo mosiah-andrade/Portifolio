@@ -1,7 +1,18 @@
+
+@font-face {
+    font-family: 'GothamBold';
+    src: url('fonts/Gotham-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
+    font-family: "GothamBold", sans-serif;
+
 }
+
 body{
     background-color: rgb(37, 37, 37);
     display: flex;
@@ -13,7 +24,9 @@ body{
 }
 h1{
     margin: 20px;
+    font-size: 3rem;
     color: aliceblue;
+
 }
 .perfilBox{
     display: flex;

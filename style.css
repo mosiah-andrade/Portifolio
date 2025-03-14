@@ -15,20 +15,21 @@
 
 body{
     background-color: rgb(37, 37, 37);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: auto;
+    display: grid;
+    grid-template-rows: 4rem 300px 50px;
     align-items: center;
     justify-content: center;
+    margin: 15%;
 }
 h1{
+    grid-row: 1;
     margin: 20px;
     font-size: 3rem;
     color: aliceblue;
 
 }
 .perfilBox{
+    grid-row: 2;
     display: flex;
     width: 70vw;
     text-align: center;
@@ -41,3 +42,13 @@ h1{
     border-radius: 15px;
     color:aliceblue;
 }
+a{
+    grid-row: 3;
+    padding: 1rem;
+    border: solid red 1px;
+    color: aliceblue;
+    text-decoration: none;
+    margin-top: 5rem;
+    text-align: center;
+}
+

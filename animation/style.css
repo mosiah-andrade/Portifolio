@@ -1,0 +1,41 @@
+
+@font-face {
+    font-family: 'GothamBold';
+    src: url('fonts/Gotham-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "GothamBold", sans-serif;
+
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+    color: rgb(209, 37, 37);
+    overflow: hidden; /* Esconde o conteúdo fora da tela */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo do H1 */
+h1 {
+    font-size: 3rem;
+    animation: zoomInfinito 900s linear infinite; /* A animação dura 60 segundos */
+}
+
+/* Animação de zoom infinito */
+@keyframes zoomInfinito {
+    0% {
+        transform: scale(1); /* Começa no tamanho normal */
+    }
+    100% {
+        transform: scale(100); /* Aumenta progressivamente até um grande zoom */
+    }
+}

@@ -57,12 +57,17 @@ header a{
 #hero img{
     width: 100%;
 }
+#herospace{
+    
+    height: 800px;
+}
 h2{
     margin: 0px 0px 20px 100px;
 }
 .first{
-    position: relative;
-    padding-top: 800px;
+    padding-top: 20px;
+    background: linear-gradient(to bottom, rgba(33, 34, 33, 0.589), rgba(0, 128, 0, 0));
+
 }
 .grid{
     width: 90%;
@@ -70,15 +75,15 @@ h2{
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 10px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     margin: auto;
     margin-bottom: 20px;
+    scroll-behavior: auto;
 }
 .grid img{
     width: 320px;
     height: 190px;
     background-color: gray;
-    
 }
 h2{
     color: white;

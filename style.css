@@ -1,77 +1,57 @@
-
-@font-face {
-    font-family: 'GothamBold';
-    src: url('fonts/Gotham-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+  /* scroll-padding-top: 5rem; /* h-20 for fixed navbar. Adjust if navbar height changes. */
+  /* This is handled by JS smooth scroll to be more precise with header offset */
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    font-family: "GothamBold", sans-serif;
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-}
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    height: 100vh;
-    background-color: rgb(37, 37, 37);
-}
-main{
-    display: grid;
-    grid-template-rows: 4rem 300px 70px;
-    grid-template-columns: 1fr 1fr 200px;
-    align-items: center;
-    margin: auto;
-}
-h1{
-    grid-row: 1;
-    margin: 20px;
-    font-size: 3rem;
-    color: aliceblue;
-
-}
-.perfilBox{
-    grid-column: 1/4;
-    grid-row: 2;
-    display: flex;
-    width: 70vw;
-    text-align: center;
-}
-.perfil{
-    margin: auto;
-    width: 200px;
-    height: 200px;
-    background: gray;
-    border-radius: 15px;
-    color:aliceblue;
-}
-#acessar{
-    justify-content: center;
-    grid-row: 3;
-    grid-column: 2;
-}
-a{
-    padding: 1rem;
-    border: solid red 1px;
-    color: aliceblue;
-    text-decoration: none;
-    text-align: center;
-}
-a:after{
-    position: absolute;
-    content: "";
-    background: #ff003b;
-    transition: all .35s;
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-a:hover{
-    color: #fff;
-    color: #333;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-  
-a:hover:after{
-    width: 100%;
+
+/* Custom scrollbar (optional, for aesthetics) */
+/* For Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C2541; /* brand-secondary */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3A506B; /* brand-accent */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5BC0BE; /* brand-highlight */
+}
+
+/* Ensure content below fixed header is not obscured */
+body {
+  padding-top: 5rem; /* Corresponds to h-20 navbar */
+}
+
+/* Animation base styles (if not handled by JS directly) */
+/* These are now primarily controlled by JS for IntersectionObserver based triggering */
+.animate-fade-in-up, .animate-slide-in-left, .animate-fade-in {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }

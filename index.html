@@ -1,37 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio de Desenvolvedor Web</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            'brand-primary': '#0B132B', // Dark Blue
+            'brand-secondary': '#1C2541', // Slightly Lighter Dark Blue
+            'brand-accent': '#3A506B', // Steel Blue
+            'brand-highlight': '#5BC0BE', // Tealish
+            'brand-light': '#FFFFFF', // White
+            'brand-muted': '#F7F9FB', // Very Light Gray
+            'brand-text': '#A9B4C2', // Light Gray text on dark backgrounds
+            'brand-text-dark': '#0B132B', // Dark text for light backgrounds
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+            'slide-in-left': 'slideInLeft 0.5s ease-out forwards',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideInLeft: {
+              '0%': { opacity: '0', transform: 'translateX(-20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body>
-    <main>
-        <h1>Portfólio</h1>
-        <div class="perfilBox">
-            <div class="perfil">
-                <img src="https://th.bing.com/th/id/OIP.hljzrnr9nDO50vS28BHLowHaHa?rs=1&pid=ImgDetMain" alt="" class="perfil">
-                <caption>Mosiah</caption>
+<body class="bg-brand-muted text-brand-text-dark">
+
+  <!-- Header / Navbar -->
+  <header class="bg-brand-primary text-brand-light shadow-lg fixed top-0 left-0 right-0 z-50 h-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center h-full">
+      <a href="#inicio" class="text-2xl font-serif font-bold hover:text-brand-highlight transition-colors">Mosiah Andrade</a>
+      <nav class="hidden md:flex space-x-6 items-center">
+        <a href="#sobre" class="hover:text-brand-highlight transition-colors">Sobre</a>
+        <a href="#projetos" class="hover:text-brand-highlight transition-colors">Projetos</a>
+        <a href="#habilidades" class="hover:text-brand-highlight transition-colors">Habilidades</a>
+        <a href="#contato" class="bg-brand-highlight text-brand-primary px-4 py-2 rounded-md hover:bg-opacity-80 transition-colors font-medium">Contato</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="mobile-menu-button" aria-label="Abrir menu" class="text-brand-light focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-secondary absolute top-20 left-0 right-0 shadow-lg animate-fade-in">
+      <nav class="flex flex-col items-center space-y-4 py-4">
+        <a href="#sobre" class="hover:text-brand-highlight transition-colors py-2 mobile-menu-link">Sobre</a>
+        <a href="#projetos" class="hover:text-brand-highlight transition-colors py-2 mobile-menu-link">Projetos</a>
+        <a href="#habilidades" class="hover:text-brand-highlight transition-colors py-2 mobile-menu-link">Habilidades</a>
+        <a href="#contato" class="bg-brand-highlight text-brand-primary px-6 py-2 rounded-md hover:bg-opacity-80 transition-colors font-medium mobile-menu-link">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio" class="min-h-screen flex items-center justify-center bg-[url('./heroimg.jpg')] bg-cover bg-center text-brand-light pt-20 animate-fade-in"
+  style="background-color: rgba(0, 0, 0, 0.5); background-blend-mode: multiply;">
+    <div class="text-center p-6 md:p-10">
+      <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 animate-fade-in-up" style="animation-delay: 0.2s;">Olá, eu sou Mosiah</h1>
+      <p class="text-xl md:text-2xl text-brand-text mb-8 animate-fade-in-up" style="animation-delay: 0.4s;">Desenvolvedor Web Criativo e Apaixonado por Tecnologia.</p>
+      <a href="#projetos" class="bg-brand-highlight text-brand-primary px-8 py-3 rounded-md text-lg font-semibold hover:bg-opacity-80 transition-all transform hover:scale-105 animate-fade-in-up" style="animation-delay: 0.6s;">Meus Projetos</a>
+    </div>
+</section>
+  <!-- About Section -->
+  <section id="sobre" class="py-16 md:py-24 bg-brand-light text-brand-text-dark animate-fade-in-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-brand-primary">Sobre Mim</h2>
+      <div class="max-w-3xl mx-auto text-center md:text-lg space-y-6">
+        <p>Olá! Sou um desenvolvedor web com foco em criar experiências digitais incríveis e intuitivas. Tenho paixão por transformar ideias em realidade através de código limpo e eficiente.</p>
+        <p>Com experiência em UX Design e gestão de Projetos, busco sempre aprender e aplicar as melhores práticas do mercado para entregar soluções de alta qualidade.</p>
+        <p>Fora do mundo do desenvolvimento, gosto de Jogos de tabuleiro e ler bons livros. Acredito que a criatividade e a resolução de problemas são habilidades que se complementam em todas as áreas da vida.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projetos" class="py-16 md:py-24 bg-brand-muted text-brand-text-dark animate-fade-in-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-brand-primary">Projetos Destacados</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card 1 -->
+        <div class="bg-brand-light rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+          <img src="clinica.png" alt="Nome do Projeto 3" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold font-serif mb-2 text-brand-primary">Clinica Medica</h3>
+            <p class="text-sm text-brand-accent mb-3">Um site completo institucional para uma clinica medica priorizando o Design simples e intuitivo visando tambem a resposividade</p>
+            <div class="mb-4 mt-auto">
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">HTML & CSS</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">tailwind</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mb-1">UX/UI</span>
             </div>
-            <div class="perfil">
-                <img src="https://th.bing.com/th/id/OIP.hljzrnr9nDO50vS28BHLowHaHa?rs=1&pid=ImgDetMain" alt="" class="perfil">
-                <caption>Legenda</caption>
+            <div class="flex space-x-3">
+              <a href="https://mosiah-andrade.github.io/AsaWebServi-os/asaweb/portifolio/clinica/index.html" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0l-4-4a2 2 0 012.828-2.828L8 7.172l2.586-2.586zM11 5.586L8.414 3A4 4 0 002.757 8.657l4 4a4 4 0 005.657 0l3-3a4 4 0 00-5.657-5.657L11 5.586z" clip-rule="evenodd" /></svg>
+                Ver Demo
+              </a>
+              <a href="https://github.com/mosiah-andrade/AsaWebServi-os/tree/main/asaweb/portifolio/clinica" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M8 9a2 2 0 100-4 2 2 0 000 4zM4 18a2 2 0 012-2h8a2 2 0 110 4H6a2 2 0 01-2-2zM4 9a2 2 0 012-2h.93a2 2 0 001.789-1.106l.894-1.789a2 2 0 011.789-1.106h.098a2 2 0 011.79 1.106l.893 1.79a2 2 0 001.788 1.105H14a2 2 0 110 4h-1.07a2 2 0 00-1.789 1.106L10.243 14H8a2 2 0 110-4h.382l.632-1.264A2 2 0 0010.243 9H8zm10-3a2 2 0 100-4 2 2 0 000 4z" /></svg>
+                GitHub
+              </a>
             </div>
-            <div class="perfil">
-                <img src="https://th.bing.com/th/id/OIP.hljzrnr9nDO50vS28BHLowHaHa?rs=1&pid=ImgDetMain" alt="" class="perfil">
-                <caption>Legenda</caption>
+          </div>
+        </div>  
+        <!-- Project Card 2 -->
+        <div class="bg-brand-light rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+          <img src="servicoHomolog.png" alt="Nome do Projeto 2" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold font-serif mb-2 text-brand-primary">Web App de solicitação de serviço</h3>
+            <p class="text-sm text-brand-accent mb-3">Uma Solução de solicitação de serviço com automação <strong>Tally e Notion</strong></p>
+            <div class="mb-4 mt-auto">
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">HTML & CSS</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">JavaScript</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mb-1">Tally Automação</span>
             </div>
-            <div class="plus">
-                <img src="scr/image/plusSignal.png" alt="" class="perfil" style="background: transparent;">
-                <caption></caption>
+            <div class="flex space-x-3">
+              <a href="https://servico.homologsolar.com/" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0l-4-4a2 2 0 012.828-2.828L8 7.172l2.586-2.586zM11 5.586L8.414 3A4 4 0 002.757 8.657l4 4a4 4 0 005.657 0l3-3a4 4 0 00-5.657-5.657L11 5.586z" clip-rule="evenodd" /></svg>
+                Ver Demo
+              </a>
+              <a href="https://github.com/mosiah-andrade/Solicitacao-de-servico" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M8 9a2 2 0 100-4 2 2 0 000 4zM4 18a2 2 0 012-2h8a2 2 0 110 4H6a2 2 0 01-2-2zM4 9a2 2 0 012-2h.93a2 2 0 001.789-1.106l.894-1.789a2 2 0 011.789-1.106h.098a2 2 0 011.79 1.106l.893 1.79a2 2 0 001.788 1.105H14a2 2 0 110 4h-1.07a2 2 0 00-1.789 1.106L10.243 14H8a2 2 0 110-4h.382l.632-1.264A2 2 0 0010.243 9H8zm10-3a2 2 0 100-4 2 2 0 000 4z" /></svg>
+                GitHub
+              </a>
             </div>
+          </div>
         </div>
-            
-        <div id="acessar" class="wrapper">
-            <a href="animation/index.html"> Acessar Portifolio</a>
+        <!-- Project Card 3 -->
+        <div class="bg-brand-light rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+          <img src="queroClaro.png" alt="Nome do Projeto 3" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold font-serif mb-2 text-brand-primary">Site de vendas Afiliado Claro</h3>
+            <p class="text-sm text-brand-accent mb-3">Pagina de capitura de leads para Afiliado da claro, focado no <strong>Mobile First</strong> e utilizando comunicação visual da Claro</p>
+            <div class="mb-4 mt-auto">
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">HTML, CSS $ JS</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">SEO</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mb-1">UX/UI</span>
+            </div>
+            <div class="flex space-x-3">
+              <a href="https://queroclaro.com.br/" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0l-4-4a2 2 0 012.828-2.828L8 7.172l2.586-2.586zM11 5.586L8.414 3A4 4 0 002.757 8.657l4 4a4 4 0 005.657 0l3-3a4 4 0 00-5.657-5.657L11 5.586z" clip-rule="evenodd" /></svg>
+                Ver Demo
+              </a>
+              <a href="https://github.com/mosiah-andrade/site-claro-afiliado" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M8 9a2 2 0 100-4 2 2 0 000 4zM4 18a2 2 0 012-2h8a2 2 0 110 4H6a2 2 0 01-2-2zM4 9a2 2 0 012-2h.93a2 2 0 001.789-1.106l.894-1.789a2 2 0 011.789-1.106h.098a2 2 0 011.79 1.106l.893 1.79a2 2 0 001.788 1.105H14a2 2 0 110 4h-1.07a2 2 0 00-1.789 1.106L10.243 14H8a2 2 0 110-4h.382l.632-1.264A2 2 0 0010.243 9H8zm10-3a2 2 0 100-4 2 2 0 000 4z" /></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
-    </main>
-    
+        <!-- Project Card 4 -->
+        <div class="bg-brand-light rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+          <img src="MARCAaQUI.png" alt="Nome do Projeto 3" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold font-serif mb-2 text-brand-primary">SAAS Cartão Fidelidade</h3>
+            <p class="text-sm text-brand-accent mb-3">Projeto feito junto do <strong>Porto Digital</strong> e a Empresa <a href="https://mulungustudio.com/" target="_blank" style="color: blue;">Munlungo Studio</a> com o proposito de fazer um cartão fidelidade Digital</p>
+            <div class="mb-4 mt-auto">
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">HTML, CSS $ JS</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mr-2 mb-1">API</span>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-brand-highlight bg-brand-highlight bg-opacity-20 mb-1">UX/UI</span>
+            </div>
+            <div class="flex space-x-3">
+              <a href="https://cartao-fidelidade-kappa.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0l-4-4a2 2 0 012.828-2.828L8 7.172l2.586-2.586zM11 5.586L8.414 3A4 4 0 002.757 8.657l4 4a4 4 0 005.657 0l3-3a4 4 0 00-5.657-5.657L11 5.586z" clip-rule="evenodd" /></svg>
+                Ver Demo
+              </a>
+              <a href="https://github.com/Hfaaf/CartaoFidelidade" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-highlight transition-colors font-medium flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M8 9a2 2 0 100-4 2 2 0 000 4zM4 18a2 2 0 012-2h8a2 2 0 110 4H6a2 2 0 01-2-2zM4 9a2 2 0 012-2h.93a2 2 0 001.789-1.106l.894-1.789a2 2 0 011.789-1.106h.098a2 2 0 011.79 1.106l.893 1.79a2 2 0 001.788 1.105H14a2 2 0 110 4h-1.07a2 2 0 00-1.789 1.106L10.243 14H8a2 2 0 110-4h.382l.632-1.264A2 2 0 0010.243 9H8zm10-3a2 2 0 100-4 2 2 0 000 4z" /></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="habilidades" class="py-16 md:py-24 bg-brand-light text-brand-text-dark animate-fade-in-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-brand-primary">Minhas Habilidades</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">HTML5</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">CSS3</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">JavaScript</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png?20230715030042" alt="Tailwind CSS" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">Tailwind CSS</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="Tailwind CSS" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">Bootstrap</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">React</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">Node.js</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">Git</p>
+        </div>
+         <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">Figma</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">Python</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://miro.medium.com/v2/resize:fit:300/1*A_Hg7NPIoARg0RmdsVapqg.png" alt="Docker" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">C#</p>
+        </div>
+        <div class="p-4 bg-brand-muted rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <img src="https://th.bing.com/th/id/R.bab2c760c60f17191cb3a002e08a3dbf?rik=yiOb%2bDZuARgRSw&riu=http%3a%2f%2fpngimg.com%2fuploads%2fmysql%2fmysql_PNG23.png&ehk=ughz54ymXwgnjlfws2xz7%2fznA2I4qAWExdUJe%2bcD7K0%3d&risl=&pid=ImgRaw&r=0" alt="Docker" class="h-16 w-16 mx-auto mb-2"/>
+          <p class="font-semibold">MySQL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contato" class="py-16 md:py-24 bg-brand-secondary text-brand-light animate-fade-in-up">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Entre em Contato</h2>
+      <p class="text-lg text-brand-text mb-8 max-w-xl mx-auto">Estou sempre aberto a novas oportunidades e colaborações. Sinta-se à vontade para me contatar!</p>
+      <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <a href="mailto:mosiahassuncao@gmail.com" class="inline-flex items-center justify-center bg-brand-highlight text-brand-primary px-6 py-3 rounded-md text-lg font-semibold hover:bg-opacity-80 transition-colors w-full sm:w-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+          </svg>
+          Enviar Email
+        </a>
+        <a href="https://linkedin.com/in/mosiah-andrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center border-2 border-brand-highlight text-brand-highlight px-6 py-3 rounded-md text-lg font-semibold hover:bg-brand-highlight hover:text-brand-primary transition-colors w-full sm:w-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 mr-2"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-primary text-brand-text py-8 text-center">
+    <div class="container mx-auto px-6">
+      <p>&copy; <span id="currentYear"></span> Mosiah Andrade. Todos os direitos reservados.</p>
+      <p class="text-sm mt-1">Construído com <span role="img" aria-label="coração">❤️</span> e Tailwind CSS.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
